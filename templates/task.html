@@ -4,11 +4,10 @@
 <p>{{ task.description }}</p>
 <p><small>Created at: {{ task.created_at}}</p>
 
-<p>
-    <a href="#">Edit</a>
-</p>
-
-<form>
-    <button type="submit">Delete</button>
-</form>
+<div class="task-actions">
+    <a href="#" class="btn">Edit</a>
+    <form>
+        <button type="submit" class="btn">Delete</button>
+    </form>
+</div>
 {% endblock %}
