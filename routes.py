@@ -38,7 +38,8 @@ def all_tasks():
 
 @app.route("/task/<int:task_id>")
 def task(task_id):
-    return f"<h1>Task detail page for task {task_id}</h1>"
+    task = todos[task_id]
+    return render_template("task.html", task=task)    
 
 
 @app.route("/new-task")
