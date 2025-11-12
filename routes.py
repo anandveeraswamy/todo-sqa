@@ -46,8 +46,7 @@ def task(task_id):
 @app.route("/edit-task/<int:task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
     index = task_id - 1
-    task = todos[index]
-    print(task)
+    task = todos[index]    
     if request.method == "POST":
         title = request.form.get("title")
         description = request.form.get("description")
@@ -58,6 +57,17 @@ def edit_task(task_id):
     return render_template("task_form.html", task=task)
 
 
-@app.route("/new-task")
-def create_task():
-    return render_template("new_task.html")
+@app.route("/new-task", methods=["GET", "POST"])
+def create_task():    
+    if request.method == "POST":
+        task_id = todos[-1]["id"] + 1
+        title = request.form.get("title")
+        description = request.form.get("description")
+        todos.append({
+         "id": task_id,
+         "title": title,
+         "description": description ,
+         "created_at": datetime.now()
+        })
+        return redirect(url_for("task", task_id=task_id))    
+    return render_template("task_form.html", task=None)
