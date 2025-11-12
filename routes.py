@@ -7,7 +7,7 @@ def index():
 
 @app.route("/tasks")
 def all_tasks():
-    return "<h1>List of all tasks</h1>"
+    return render_template("tasks.html")
 
 @app.route("/task/<int:task_id>")
 def task(task_id):
@@ -15,4 +15,4 @@ def task(task_id):
 
 @app.route("/new-task")
 def create_task():
-    return f"<h1>Placeholder for creating a new task"
+     return render_template("new_task.html")
