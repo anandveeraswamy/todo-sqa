@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for, flash
 from datetime import datetime
 from forms import LoginForm
 
+
 todos = [
     {
         "id": 1,
