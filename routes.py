@@ -38,8 +38,12 @@ def all_tasks():
 
 @app.route("/task/<int:task_id>")
 def task(task_id):
-    index = task_id - 1
-    task = todos[index]
+    # index = task_id - 1
+    # task = todos[index]
+    task = None
+    for todo in todos:
+        if todo["id"] == task_id:
+            task = todo
     return render_template("task.html", task=task)    
 
 
