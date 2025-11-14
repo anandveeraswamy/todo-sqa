@@ -12,8 +12,7 @@ from urllib.parse import urlsplit
 
 @app.route("/")
 @login_required
-def index():
-    # todo_count = len(todos)
+def index():    
     todo_count = Todo.query.count()
     return render_template("index.html", todo_count=todo_count)
 
@@ -27,26 +26,18 @@ def all_tasks():
 
 @app.route("/task/<int:task_id>")
 @login_required
-def task(task_id):
-    # task = None
-    # for todo in todos:
-    #     if todo["id"] == task_id:
-    #         task = todo
+def task(task_id):  
     task = Todo.query.get_or_404(task_id)
     return render_template("task.html", task=task)
 
 
 @app.route("/edit-task/<int:task_id>", methods=["GET", "POST"])
 @login_required
-def edit_task(task_id):
-    # index = task_id - 1
-    # task = todos[index]
+def edit_task(task_id):    
     task = Todo.query.get_or_404(task_id)
     if request.method == "POST":
         title = request.form.get("title")
-        description = request.form.get("description")
-        #     todos[index]["title"] = title
-        #     todos[index]["description"] = description
+        description = request.form.get("description")        
         task.title = title
         task.description = description
         db.session.commit()
@@ -57,20 +48,13 @@ def edit_task(task_id):
 @app.route("/new-task", methods=["GET", "POST"])
 @login_required
 def create_task():
-    if request.method == "POST":
-        # task_id = todos[-1]["id"] + 1
+    if request.method == "POST":        
         title = request.form.get("title")
-        description = request.form.get("description")
-        # todos.append({
-        #  "id": task_id,
-        #  "title": title,
-        #  "description": description ,
-        #  "created_at": datetime.now()
-        # })
+        description = request.form.get("description")        
         task = Todo(
             title=title,
             description=description,
-            user=current_user,  # set foreign key correctly
+            user=current_user, 
         )
         db.session.add(task)
         db.session.commit()
@@ -81,8 +65,6 @@ def create_task():
 @app.route("/delete-task/<int:task_id>", methods=["Post"])
 @login_required
 def delete_task(task_id):
-    # global todos
-    # todos = [todo for todo in todos if todo["id"] != task_id]
     task = Todo.query.get_or_404(task_id)
     db.session.delete(task)
     db.session.commit()
@@ -100,12 +82,9 @@ def login():
         )
         if user is None or not user.get_password(form.password.data):
             flash("Invalid username or password")
-            return redirect(url_for(login))
+            return redirect(url_for("login"))
         login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get("next")
-        # To determine if the URL is absolute or relative,
-        # I parse it with Python's urlsplit() function and then
-        # check if the netloc component is set or not.
+        next_page = request.args.get("next")        
         if not next_page or urlsplit(next_page).netloc != "":
             next_page = url_for("index")
         return redirect(next_page)
