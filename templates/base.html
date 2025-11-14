@@ -11,6 +11,7 @@
       <li class="navlink"><a href="{{ url_for('index') }}">Home</a></li>
       {% if current_user.is_anonymous %}
       <li class="navlink"><a href="{{ url_for('login') }}">Login</a></li>
+      <li class="navlink"><a href="{{ url_for('register') }}">Register</a></li>
       {% else %}      
       <li class="navlink"><a href="{{ url_for('all_tasks') }}">View Tasks</a></li>
       <li class="navlink"><a href="{{ url_for('create_task') }}">New Task</a></li>
