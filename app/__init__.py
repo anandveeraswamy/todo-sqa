@@ -7,13 +7,13 @@ from flask_login import LoginManager
 
 
 db = SQLAlchemy()
-migrate = Migrate(db)
+migrate = Migrate()
 login = LoginManager()
 login.login_view = 'login'
 
 def create_app(config_class=Config):
     app = Flask(__name__)    
-    app.config.from_object(Config) 
+    app.config.from_object(config_class) 
     
     db.init_app(app)
     migrate.init_app(app, db)
@@ -22,7 +22,7 @@ def create_app(config_class=Config):
     # Import models so SQLAlchemy registers them
     from app import models
     
-    # Development shortcut: create tables if they do not exist
+    # Development shortcut only to create tables if they do not exist
     # For Production use: flask db init       # only once per project
     # flask db migrate -m "Initial tables"
     # flask db upgrade
@@ -35,6 +35,3 @@ def create_app(config_class=Config):
     init_routes(app)
     
     return app
-    
-
-# import app.routes as routes
