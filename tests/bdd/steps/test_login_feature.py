@@ -57,3 +57,4 @@ def enter_incorrect_username(client):
 def redirected_homepage(login_response):    
     assert login_response.status_code == 200
     assert b'Invalid username or password' in login_response.data
+    
