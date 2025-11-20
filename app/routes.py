@@ -27,15 +27,15 @@ def init_routes(app):
 
     @app.route("/task/<int:task_id>")
     @login_required
-    def task(task_id):  
-        task = Todo.query.get_or_404(task_id)
+    def task(task_id):          
+        task = db.session.get(Todo, task_id)
         return render_template("task.html", task=task)
 
 
     @app.route("/edit-task/<int:task_id>", methods=["GET", "POST"])
     @login_required
-    def edit_task(task_id):    
-        task = Todo.query.get_or_404(task_id)
+    def edit_task(task_id):            
+        task = db.session.get(Todo, task_id)
         if request.method == "POST":
             title = request.form.get("title")
             description = request.form.get("description")        
@@ -65,8 +65,8 @@ def init_routes(app):
 
     @app.route("/delete-task/<int:task_id>", methods=["Post"])
     @login_required
-    def delete_task(task_id):
-        task = Todo.query.get_or_404(task_id)
+    def delete_task(task_id):        
+        task = db.session.get(Todo, task_id)
         db.session.delete(task)
         db.session.commit()
         return redirect(url_for("all_tasks"))
@@ -111,3 +111,13 @@ def init_routes(app):
             flash("Congratulations, your registration was successful")
             return redirect(url_for("login"))
         return render_template("register.html", form=form)
+    
+    @app.route("/task/<int:task_id>/complete", methods=["Post"])
+    @login_required
+    def mark_task_complete(task_id):        
+        task = db.session.get(Todo, task_id)
+
+        task.completed = True
+        db.session.commit()
+        flash(f"Task {task.title} marked as completed.")
+        return redirect(url_for("all_tasks"))

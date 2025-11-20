@@ -9,5 +9,8 @@
     <form method="post" action="{{ url_for('delete_task', task_id=task.id) }}">
         <button type="submit" class="btn">Delete</button>
     </form>
+    <form method="post" action="{{ url_for('mark_task_complete', task_id=task.id) }}">
+        <button type="submit" class="btn">Mark Complete</button>
+    </form>
 </div>
 {% endblock %}

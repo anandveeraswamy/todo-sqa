@@ -107,4 +107,24 @@ def test_login_authenticated_user(client, auth):
     
     authenticated_user_response = client.get("/login", follow_redirects=True)
     assert authenticated_user_response.status_code == 200
-    assert b"Hello Testuser" in authenticated_user_response.data   
+    assert b"Hello Testuser" in authenticated_user_response.data 
+
+def test_mark_task_complete(client, auth, user):
+    auth.login()  
+    todo = Todo(
+        title="Test task",
+        description="Description here",
+        user=user,
+    )
+    db.session.add(todo)
+    db.session.commit()
+    todo_id = todo.id
+
+    resp = client.post(
+        f'/task/{todo_id}/complete',
+        follow_redirects=True
+    )
+
+    assert resp.status_code == 200
+    updated = db.session.get(Todo, todo_id)
+    assert updated.completed is True
