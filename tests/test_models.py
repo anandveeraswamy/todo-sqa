@@ -15,12 +15,7 @@ def test_user_password_hashing(app):
     assert user.get_password("wrong") is False
 
 
-def test_todo_belongs_to_user(app):
-    user = User(username="bob")
-    user.set_password("password")
-    db.session.add(user)
-    db.session.commit()
-
+def test_todo_belongs_to_user(app, user):
     todo = Todo(
         title="Test task",
         description="Description here",
@@ -31,4 +26,17 @@ def test_todo_belongs_to_user(app):
 
     assert todo.id is not None
     assert todo.user_id == user.id
-    assert todo.user.username == "bob"
+    assert todo.user.username == "testuser"
+
+
+def test_todo_has_completed_flag_defaults_false(app, user):
+    todo = Todo(
+        title="Test task",
+        description="Description here",
+        user=user,
+    )
+    db.session.add(todo)
+    db.session.commit()
+
+    assert todo.completed is False
+
