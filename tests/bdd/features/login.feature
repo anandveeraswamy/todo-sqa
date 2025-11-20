@@ -3,10 +3,11 @@ Feature: User Login
   I want to log in
   so I can access my tasks
 
-
-  Scenario: Successful login with correct credentials
+  Background: 
     Given a registered user exists
-    And I am on the login page
+
+  Scenario: Successful login with correct credentials    
+    Given I am on the login page
     When I enter valid credentials
     Then I should be redirected to the homepage  
 

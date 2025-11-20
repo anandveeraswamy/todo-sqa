@@ -1,13 +1,13 @@
-from pytest_bdd import scenarios, scenario, given, when, then
-from app.models import User
-from app import db
+from pytest_bdd import scenarios, given, when, then
+
 
 scenarios('../features/login.feature')
 
 @given('a registered user exists')
-def registered_user(auth):
+def registered_user(user):
     # The fixture creates the test user automatically.
     # No code is needed here.
+    # Just implementing the fixture does the job
     pass
     
 
@@ -26,15 +26,10 @@ def enter_valid_credentials(client):
     return resp    
 
 @then('I should be redirected to the homepage')
-def redirected_homepage(login_response):
+def should_be_redirected_to_homepage(login_response):
     assert login_response.status_code == 200
     assert b'Hello Testuser' in login_response.data
     
-@given('I am on the login page')
-def on_login_page(client):
-    resp = client.get("/login")
-    assert resp.status_code == 200
-
 @when('I enter an incorrect password', target_fixture="login_response")
 def enter_incorrect_password(client):
     resp = client.post(
@@ -54,7 +49,7 @@ def enter_incorrect_username(client):
     return resp
 
 @then('I should remain on the login page')
-def redirected_homepage(login_response):    
+def should_remain_on_login_page(login_response):    
     assert login_response.status_code == 200
     assert b'Invalid username or password' in login_response.data
     
