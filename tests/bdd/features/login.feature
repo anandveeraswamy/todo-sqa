@@ -24,4 +24,4 @@ Feature: User Login
   # Scenario: Logged-in user cannot see the login page again
   #   Given I am already logged in
   #   When I try to visit the login page
-  #   Then I should be redirected to the homepage
+  #   Then I should be redirected to the homepage 
