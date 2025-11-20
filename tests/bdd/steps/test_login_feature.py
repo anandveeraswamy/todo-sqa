@@ -21,7 +21,7 @@ def enter_valid_credentials(client):
     resp = client.post(
         '/login',
         data= {"username": "testuser", "password": "Password123!"},
-        follow_redirects = True
+        follow_redirects=True
     )
     return resp    
 
@@ -52,4 +52,17 @@ def enter_incorrect_username(client):
 def should_remain_on_login_page(login_response):    
     assert login_response.status_code == 200
     assert b'Invalid username or password' in login_response.data
-    
+
+@given('I am already logged in')
+def log_in(auth):
+    auth.login()
+
+@when('I try to visit the login page', target_fixture='login_response')
+def open_login_page(client):
+    resp = client.get('/login', follow_redirects=True)
+    return resp
+
+# @then('I should be redirected to the homepage')
+# def should_be_redirected_to_homepage(login_response):
+#     assert b'Hello Testuser' in login_response.data
+# Note there is no need to add this 'then' since it is already defined

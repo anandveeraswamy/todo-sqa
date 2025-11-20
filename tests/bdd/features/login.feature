@@ -21,7 +21,7 @@ Feature: User Login
     When I enter an incorrect username
     Then I should remain on the login page 
 
-  # Scenario: Logged-in user cannot see the login page again
-  #   Given I am already logged in
-  #   When I try to visit the login page
-  #   Then I should be redirected to the homepage 
+  Scenario: Logged-in user cannot see the login page again
+    Given I am already logged in
+    When I try to visit the login page
+    Then I should be redirected to the homepage 
