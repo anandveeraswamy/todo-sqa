@@ -104,25 +104,6 @@ def init_routes(app):
             return redirect(url_for("login"))
         return render_template("register.html", form=form)
 
-    # @app.route("/task/<int:task_id>/complete", methods=["Post"])
-    # @login_required
-    # def mark_task_complete(task_id):
-    #     task = db.session.get(Todo, task_id)
-
-    #     task.completed = True
-    #     db.session.commit()
-    #     flash(f"Task {task.title} marked as completed.")
-    #     return redirect(url_for("all_tasks"))
-
-    # @app.route("/task/<int:task_id>/reopen", methods=["Post"])
-    # @login_required
-    # def task_reopen(task_id):
-    #     task = db.session.get(Todo, task_id)
-
-    #     task.completed = False
-    #     db.session.commit()
-    #     flash(f"Task {task.title} reopened.")
-    #     return redirect(url_for("all_tasks"))
     @app.route("/task/<int:task_id>/toggle", methods=["POST"])
     @login_required
     def toggle_task_completion(task_id):
