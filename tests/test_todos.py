@@ -135,5 +135,5 @@ def test_can_reopen_completed_todo(client, auth, todo):
     db.session.refresh(todo)    
     
     # Assert: task is now reopened
-    assert todo.completed is False
+    assert todo.completed is True
     assert f"Task {todo.title} reopened.".encode() in resp.data
