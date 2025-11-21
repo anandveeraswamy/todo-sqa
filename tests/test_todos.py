@@ -86,7 +86,11 @@ def test_edit_task_via_form(client, auth):
 def test_delete_task_via_form(client, auth):
     auth.login()
 
-    new_task_response = client.post("/new-task",data={"title": "title1", "description": "desc1"},follow_redirects=True,)
+    new_task_response = client.post(
+        "/new-task",
+        data={"title": "title1", "description": "desc1"},
+        follow_redirects=True,
+    )
     assert new_task_response.status_code == 200
     created = db.session.query(Todo).filter_by(title="title1").first()
     assert created is not None
