@@ -3,7 +3,6 @@ from app.models import Todo
 
 
 def test_tasks_requires_login(client):
-    unused = "I am of no use to anyone please remove me"
     resp = client.get("/tasks", follow_redirects=False)
     assert resp.status_code in (301, 302)
     assert "/login" in resp.headers["Location"]
