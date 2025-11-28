@@ -1,0 +1,43 @@
+nav {
+    margin: 0 auto 10px auto;
+    background-color: DeepSkyBlue;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav h1 {
+    margin: 10px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 10px;
+}
+
+nav ul .navlink a {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul .navlink:hover {
+    background-color: white;
+}
+
+nav ul .navlink:hover a {
+    color: DeepSkyBlue;
+}
+
+main {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.placeholder-task {
+    text-shadow: DeepSkyBlue 1px 0 10px;
+}

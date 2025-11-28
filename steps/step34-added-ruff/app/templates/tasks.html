@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+{% block main %}
+  <h1>Your Task List</h1>
+  <ul class="task-list">
+    {% for todo in todos %}
+    <li><a href="{{ url_for('task', task_id=todo.id) }}">{{ todo.title }}</a></li>
+    {% else %} 
+    <li class="placeholder-task">You're all done.... Or are you? Challenge yourself, add some new tasks to accomplish.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

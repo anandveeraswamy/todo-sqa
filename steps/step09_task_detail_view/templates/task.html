@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block main %}
+<h1>{{ task.title }}</h1>
+<p>{{ task.description }}</p>
+<p><small>Created at: {{ task.created_at}}</p>
+
+<div class="task-actions">
+    <a href="#" class="btn">Edit</a>
+    <form>
+        <button type="submit" class="btn">Delete</button>
+    </form>
+</div>
+{% endblock %}

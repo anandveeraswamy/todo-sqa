@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block main %}
+
+<form method="post" action="{{ url_for('edit_task', task_id=task.id) }}">
+  <label
+    >Title
+    <input name="title" value="{{task.title}}" />
+  </label>
+  <br />
+  <label
+    >Description
+    <textarea name="description">{{ task.description }}</textarea>
+  </label>
+  <br />
+  <button type="submit" class="btn">Save Changes</button>
+  <a href="{{ url_for('all_tasks')}}" class="btn">Cancel</a>
+</form>
+{% endblock %}

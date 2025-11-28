@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo Home</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">    
+</head>
+<body>
+  <nav>
+    <h1>Flask ToDo App</h1>
+    <ul>
+      <li class="navlink"><a href="{{ url_for('index') }}">Home</a></li>
+      <li class="navlink"><a href="{{ url_for('all_tasks') }}">View Tasks</a></li>
+      <li class="navlink"><a href="{{ url_for('create_task') }}">New Task</a></li>
+    </ul>
+  </nav>
+  <main>
+    {% block main %}
+    {% endblock %}
+  </main>
+</body>
+</html>

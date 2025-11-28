@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block main %}
+  <form method="post" action="{% if task %} {{
+  url_for('edit_task', task_id=task.id) }} {% else %} {{ url_for('create_task') }} {% endif %}" >
+  <label>Title
+    <input name="title" value="{{task.title if task else '' }}" />
+  </label>
+  <br />  <br />
+  <label>Description
+    <textarea name="description">
+{{ task.description if task else '' }}</textarea>
+  </label>
+  <br />
+  <button type="submit" class="btn">Save Changes</button>
+  <a href="{{ url_for('all_tasks')}}" class="btn">Cancel</a>
+</form>
+{% endblock %}

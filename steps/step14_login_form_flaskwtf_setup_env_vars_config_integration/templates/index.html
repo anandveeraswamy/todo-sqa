@@ -1,0 +1,4 @@
+{% extends 'base.html' %} 
+{% block main %}
+<p>You have {{ todo_count }} tasks in total. <a href={{ url_for('all_tasks') }}>Click here </a>to view the tasks </p>
+{% endblock %}

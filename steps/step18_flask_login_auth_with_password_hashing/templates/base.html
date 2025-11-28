@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo Home</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">    
+</head>
+<body>
+  <nav>
+    <h1>Flask ToDo App</h1>
+    <ul>
+      <li class="navlink"><a href="{{ url_for('index') }}">Home</a></li>
+      {% if current_user.is_anonymous %}
+      <li class="navlink"><a href="{{ url_for('login') }}">Login</a></li>
+      {% else %}      
+      <li class="navlink"><a href="{{ url_for('all_tasks') }}">View Tasks</a></li>
+      <li class="navlink"><a href="{{ url_for('create_task') }}">New Task</a></li>
+      <li class="navlink"><a href="{{ url_for('logout') }}">Logout</a></li>
+      {% endif %}
+      
+    </ul>
+  </nav>
+  <main>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block main %}
+    {% endblock %}
+  </main>
+</body>
+</html>
