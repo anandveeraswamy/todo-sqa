@@ -1,3 +1,16 @@
+# How to run the application?
+
+Run the following commands on the terminal
+
+```
+python -m venv venv
+(Mac/Linux) source venv/bin/activate
+(Windows) venv/scripts/activate
+pip install -r requirements.txt
+flask db upgrade
+flask run
+```
+
 # Project Overview – Flask Todo App
 
 This project guides learners through the complete development of a fully functional Flask Todo application while progressively introducing professional software engineering and Software Quality Assurance (SQA) practices. Beginning with the simplest routing examples, the project evolves through templating, form handling, secure authentication, and SQLAlchemy-based database integration. It then advances into scalable application architecture using the factory pattern, automated testing with pytest, Behaviour-Driven Development (BDD), Test-Driven Development (TDD), and continuous integration with GitHub Actions.
