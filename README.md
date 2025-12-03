@@ -19,7 +19,7 @@ The application is intentionally designed as an **educational learning tool**. I
 
 Across steps **step01–step34**, students learn how to build a maintainable, secure, testable, and industry-aligned web application. They gain hands-on experience with Flask, Jinja2, WTForms, SQLAlchemy, authentication, environment variables, linters, formatters, CI pipelines, and modern testing strategies. By the end, learners not only understand how the application works but also how high-quality software is designed, validated, protected, refactored, documented, and delivered in contemporary development teams.
 
-Note: The step numbers provided in brackets serve as a general guide and may not match every implementation precisely. See the steps folder which contain code snapshots per step. Note the step folder is not part of the flask application but is a collection of all the tags/steps used for analysing how the project was developed step by step
+Note: The step numbers provided in brackets serve as a general guide and may not match every implementation precisely. See the steps repository at https://github.com/anandveeraswamy/todo-sqa-steps which contains code snapshots per step. The steps repository shows how the project was developed step by step.
 
 # Flask Todo App – Full Project Summary (step01–step34)
 
