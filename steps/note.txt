@@ -1,1 +1,0 @@
-This is not a project folder but contains the steps followed to reach the final version
