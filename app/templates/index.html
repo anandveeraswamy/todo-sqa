@@ -1,4 +1,4 @@
 {% extends 'base.html' %} 
 {% block main %}
-<p>Hello {{ current_user.username | capitalize }}, You have {{ todo_count }} tasks in total. <a href={{ url_for('all_tasks') }}>Click here </a>to view the tasks </p>
+<p>Hello {{ current_user.username | capitalize }}, You have {{ todo_count }} tasks in total. <a href={{ url_for('tasks.all_tasks') }}>Click here </a>to view the tasks </p>
 {% endblock %}
