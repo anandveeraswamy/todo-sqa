@@ -1,11 +1,13 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from app import db
-from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import login
+
+if TYPE_CHECKING:
+    from app.tasks.models import Todo
 
 
 @login.user_loader

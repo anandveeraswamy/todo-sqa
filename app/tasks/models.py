@@ -1,7 +1,11 @@
+from typing import TYPE_CHECKING
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from app import db
 from datetime import datetime
+
+if TYPE_CHECKING:
+    from app.auth.models import User
 
 
 class Todo(db.Model):
