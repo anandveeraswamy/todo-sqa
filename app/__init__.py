@@ -25,8 +25,8 @@ def create_app(config_class=Config):
     # flask db upgrade
 
     # Import models to register them with SQLAlchemy
-    from app.auth import models as auth_models
-    from app.tasks import models as task_models
+    from app.auth import models as auth_models  # noqa: F401
+    from app.tasks import models as task_models  # noqa: F401
 
     # Register blueprints
     from app import auth, tasks, main

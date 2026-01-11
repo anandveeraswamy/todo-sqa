@@ -1,1 +1,1 @@
-from app.main.routes import bp
+from app.main.routes import bp as bp

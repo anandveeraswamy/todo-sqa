@@ -1,1 +1,1 @@
-from app.tasks.routes import bp
+from app.tasks.routes import bp as bp
