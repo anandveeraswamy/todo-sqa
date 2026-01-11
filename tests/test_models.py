@@ -1,6 +1,7 @@
 # tests/test_models.py
 from app import db
-from app.models import User, Todo
+from app.tasks.models import Todo
+from app.auth.models import User
 
 
 def test_user_password_hashing(app):

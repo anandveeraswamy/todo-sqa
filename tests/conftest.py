@@ -2,7 +2,8 @@
 import pytest
 from app import create_app, db
 from config import Config
-from app.models import User, Todo
+from app.auth.models import User
+from app.tasks.models import Todo
 
 
 class TestConfig(Config):

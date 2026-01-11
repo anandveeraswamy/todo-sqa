@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 from app import db
-from app.models import Todo
+from app.tasks.models import Todo
 
-bp = Blueprint("tasks", __name__)
+bp = Blueprint("tasks", __name__, template_folder="templates")
 
 
 @bp.route("/tasks")

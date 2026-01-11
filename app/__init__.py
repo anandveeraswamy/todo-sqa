@@ -19,13 +19,14 @@ def create_app(config_class=Config):
     migrate.init_app(app, db)
     login.init_app(app)
 
-    # Development shortcut only to create tables if they do not exist
+    # instructions to initialise the db
     # For Production use: flask db init       # only once per project
     # flask db migrate -m "Initial tables"
     # flask db upgrade
 
-    with app.app_context():
-        db.create_all()
+    # Import models to register them with SQLAlchemy
+    from app.auth import models as auth_models
+    from app.tasks import models as task_models
 
     # Register blueprints
     from app import auth, tasks, main
@@ -33,7 +34,5 @@ def create_app(config_class=Config):
     app.register_blueprint(auth.bp)
     app.register_blueprint(tasks.bp)
     app.register_blueprint(main.bp)
-
-    # init_routes(app)
 
     return app

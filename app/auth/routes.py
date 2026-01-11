@@ -3,10 +3,10 @@ from flask_login import current_user, login_user, logout_user
 from urllib.parse import urlsplit
 import sqlalchemy as sa
 from app import db
-from app.forms import LoginForm, RegistrationForm
-from app.models import User
+from app.auth.forms import LoginForm, RegistrationForm
+from app.auth.models import User
 
-bp = Blueprint("auth", __name__)
+bp = Blueprint("auth", __name__, template_folder="templates")
 
 
 @bp.route("/login", methods=["GET", "POST"])

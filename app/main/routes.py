@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template
 from flask_login import login_required
-from app.models import Todo
+from app.tasks.models import Todo
 
-bp = Blueprint("main", __name__)
+bp = Blueprint("main", __name__, template_folder="templates")
 
 
 @bp.route("/")

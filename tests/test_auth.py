@@ -1,5 +1,5 @@
 from app import db
-from app.models import User
+from app.auth.models import User
 
 
 def test_login_page_loads(client):
